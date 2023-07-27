@@ -11,3 +11,23 @@ message MsgName{
 }
 ```
 
+## 数据类型
+
+| proto Type | C++ Type | Java/Kotlin Type | Go Type |
+| ---------- | -------- | ---------------- | ------- |
+| double     | double   | double           | float64 |
+| float      | float    | float            | float32 |
+| int32      | int32    | int              | int32   |
+| int64      | int64    | long             | int64   |
+| uint32     | uint32   | int              | uint32  |
+| uint64     | uint64   | long             | uint64  |
+| sint32     | int32    | int              | int32   |
+| sint64     | int64    | long             | int64   |
+| fixed32    | uint32   | int              | uint32  |
+| fixed64    | uint64   | long             | uint64  |
+| sfixed32   | int32    | int              | int32   |
+| sfixed64   | int64    | long             | int64   |
+| bool       | bool     | boolean          | bool    |
+| string     | string   | String           | string  |
+| bytes      | string   | ByteString       | []byte  |
+
