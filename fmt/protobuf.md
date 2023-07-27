@@ -1,33 +1,46 @@
 # Protobuf
 
-Google Protocol Buffer( 简称Protobuf) 是 Google 公司内部的混合语言数据标准，可以用于结构化数据串行化，或者说序列化。它很适合做数据存储或 RPC 数据交换格式。可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。
+Google Protocol Buffer( 简称Protobuf) 是 Google 公司内部的混合语言数据标准, 可用于通讯协议, 数据存储等领域的语言无关,平台无关,可扩展的序列化数据格式
 
 ## 语法格式
 
 ```protobuf
 message MsgName{
-	[modifier] type varName 
+	[modifier] type varName; 
 	...
+	...
+	[message MsgName{ ... }]
 }
 ```
 
 ## 数据类型
 
-| proto Type | C++ Type | Java/Kotlin Type | Go Type |
-| ---------- | -------- | ---------------- | ------- |
-| double     | double   | double           | float64 |
-| float      | float    | float            | float32 |
-| int32      | int32    | int              | int32   |
-| int64      | int64    | long             | int64   |
-| uint32     | uint32   | int              | uint32  |
-| uint64     | uint64   | long             | uint64  |
-| sint32     | int32    | int              | int32   |
-| sint64     | int64    | long             | int64   |
-| fixed32    | uint32   | int              | uint32  |
-| fixed64    | uint64   | long             | uint64  |
-| sfixed32   | int32    | int              | int32   |
-| sfixed64   | int64    | long             | int64   |
-| bool       | bool     | boolean          | bool    |
-| string     | string   | String           | string  |
-| bytes      | string   | ByteString       | []byte  |
+| .Proto Type | C++ Type | Go Type | Java/Kotlin Type |
+| ----------- | -------- | ------- | ---------------- |
+| double      | double   | float64 | double           |
+| float       | float    | float32 | float            |
+| int32       | int32    | int32   | int              |
+| int64       | int64    | int64   | long             |
+| uint32      | uint32   | uint32  | int              |
+| uint64      | uint64   | uint64  | long             |
+| sint32      | int32    | int32   | int              |
+| sint64      | int64    | int64   | long             |
+| fixed32     | uint32   | uint32  | int              |
+| fixed64     | uint64   | uint64  | long             |
+| sfixed32    | int32    | int32   | int              |
+| sfixed64    | int64    | int64   | long             |
+| bool        | bool     | bool    | boolean          |
+| string      | string   | string  | String           |
+| bytes       | string   | []byte  | ByteString       |
+
+## 生成规则
+
+用户使用protoc工具将.proto文件编译后, 编译器会通过参数生成指定语言代码
+
+- 对于C++, 编译器会生成一个.h和.cc文件, 其中包含每个消息类型的类和方法
+- 对于Java, 编译器会生成一个.java文件, 其中包含每个消息类型的类和方法
+- 对于Go, 编译器会生成一个.pb.go文件, 其中包含每个消息类型的结构体和函数
+- 对于Python, 编译器会生成一个模块,将模块和元类一起使用以在运行时创建必要的Python访问类
+
+此处仅对上述语言进行说明,若有其他需求请参考https://protobuf.dev/
 
