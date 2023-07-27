@@ -33,6 +33,18 @@ message MsgName{
 | string      | string   | string  | String           |
 | bytes       | string   | []byte  | ByteString       |
 
+## 默认值
+
+解析消息时, 若消息不包含特定的单一元素, 则解析对象应设置为对应类型的默认值
+
+- 对于string, 默认值为空字符串
+- 对于bytes, 默认值为空字节
+- 对于bool, 默认值为false
+- 对于number, 默认值为0
+- 对于enum, 默认值是第一个定义的枚举值, 该值必须为0
+- 对于消息字段, 若未设置该字段, 则默认值取决于对应语言
+- 重复字段的默认值为空, 通常是对应语言的空列表
+
 ## 生成规则
 
 用户使用protoc工具将.proto文件编译后, 编译器会通过参数生成指定语言代码
