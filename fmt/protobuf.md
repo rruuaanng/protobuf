@@ -67,3 +67,28 @@ message RespHeader{
 - 对于Python, 编译器会生成一个.py文件,将模块和元类一起使用以在运行时创建必要的Python访问类
 
 此处仅对上述语言进行说明,若有其他需求请参考https://protobuf.dev/
+
+## 枚举
+
+定义消息类型时, 可使用枚举作为预定义值列表, 枚举中的每个值是一个常量
+
+```protobuf
+enum RequestT{
+	REQUEST_GET = 0;
+	REQUEST_POST = 1;
+	REQUEST_DELETE = 2;
+	REQUEST_PUT = 3;
+}
+
+message RequestHeader{
+	string id = 1;
+	string msg = "hello world!";
+	RequestT type = 2; 
+}
+```
+
+枚举在定义时必须包含一个元素值为零的常量, 这是因为:
+
+- 必须有一个零值, 便于将0作为数字默认值
+- 零值必须是第一个元素, 使得与proto2语义兼容, 其中第一个枚举值始终是默认值
+
