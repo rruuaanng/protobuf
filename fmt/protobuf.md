@@ -13,6 +13,18 @@ message MsgName{
 }
 ```
 
+## 添加注释
+
+若需要在.proto文件中添加注释, 请使用C/C++样式的//和/* ... */语法
+
+```protobuf
+/* 响应头信息 */
+message RespHeader{
+	string id = 1; // 响应id
+	string msg = "hello world!"; // 响应信息
+}
+```
+
 ## 数据类型
 
 | .Proto Type | C++ Type | Go Type | Java/Kotlin Type |
@@ -55,4 +67,3 @@ message MsgName{
 - 对于Python, 编译器会生成一个.py文件,将模块和元类一起使用以在运行时创建必要的Python访问类
 
 此处仅对上述语言进行说明,若有其他需求请参考https://protobuf.dev/
-
