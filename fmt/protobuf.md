@@ -134,3 +134,11 @@ message SearchResp{
 }
 ```
 
+## 导入定义
+
+在proto文件中,可以通过import语句将其他proto文件中定义的消息类型导入到当前文件中
+
+```protobuf
+import "path/other_files.proto"
+```
+
