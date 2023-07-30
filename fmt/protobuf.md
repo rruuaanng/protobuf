@@ -142,3 +142,33 @@ message SearchResp{
 import "path/other_files.proto"
 ```
 
+## 嵌套消息类型
+
+定义消息时,可以在消息内部定义多个消息,如下所示
+
+```protobuf
+message SearchResp{
+    message Result{
+        string id = 1;
+        map<string,string> msg = 2;
+    }
+    message Flag{
+    	int32 flag = 1;
+    }
+	repeated Result resp = 1;
+	Flag f = 2;
+}
+// other ...
+```
+
+如果需要在消息类型外部重用某个消息内的消息类型,可使用如下方式
+
+```protobuf
+// other message type ...
+message OtherMsg{
+	SearchResp.Result result = 1;
+}
+```
+
+
+
