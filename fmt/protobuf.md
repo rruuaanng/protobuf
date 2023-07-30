@@ -34,9 +34,9 @@ messageMsgName{
 
 ```protobuf
 messagePack{
-	optionalint32id=1;
-	repeatedint64set=2;
-	map<string,int32>map=3;
+	optionalint32id = 1;
+	repeatedint64set = 2;
+	map<string,int32>map = 3;
 }
 ```
 
@@ -47,8 +47,8 @@ messagePack{
 ```protobuf
 /*响应头信息*/
 messageRespHeader{
-	stringid=1;//响应id
-	stringmsg="helloworld!";//响应信息
+	stringid = 1;//响应id
+	stringmsg = "helloworld!";//响应信息
 }
 ```
 
@@ -100,17 +100,17 @@ messageRespHeader{
 定义消息类型时,可使用枚举作为预定义值列表,枚举中的每个值是一个常量
 
 ```protobuf
-enumRequestT{
-	REQUEST_GET=0;
-	REQUEST_POST=1;
-	REQUEST_DELETE=2;
-	REQUEST_PUT=3;
+enum RequestT{
+	REQUEST_GET = 0;
+	REQUEST_POST = 1;
+	REQUEST_DELETE = 2;
+	REQUEST_PUT = 3;
 }
 
-messageRequestHeader{
-	stringid=1;
-	stringmsg="helloworld!";
-	RequestTtype=2;
+message RequestHeader{
+	stringid = 1;
+	stringmsg = "helloworld!";
+	RequestTtype = 2;
 }
 ```
 
@@ -118,4 +118,19 @@ messageRequestHeader{
 
 - 必须有一个零值,便于将0作为数字默认值
 - 零值必须是第一个元素,使得与proto2语义兼容,其中第一个枚举值始终是默认值
+
+## 其他消息作为数据类型
+
+定义消息字段时可以使用其他以及定义的消息作为数据类型(与类相似),如下所示
+
+```protobuf
+message Result{
+	string id = 1;
+	map<string,string> msg = 2;
+}
+
+message SearchResp{
+	repeated Result resp = 1;
+}
+```
 
